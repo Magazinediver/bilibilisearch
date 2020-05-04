@@ -99,7 +99,7 @@
     },
     methods: {
       checkpwd(){
-        if(this.resetForm.password != this.resetForm.cpassword){
+        if(this.resetForm.password !== this.resetForm.cpassword){
           this.$message.error('两次输入的密码不相同')
         }else{
          this.reset()

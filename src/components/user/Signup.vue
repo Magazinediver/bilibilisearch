@@ -136,7 +136,7 @@
         this.$router.replace('/login')
       },
       async getUserList () {
-        const { data: res } = await this.$http.get('users', {
+        const { data: res } = await this.$http.get('/api/login', {
           params: this.queryInfo
         })
         if (res.meta.status !== 200) {

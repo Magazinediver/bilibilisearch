@@ -94,7 +94,7 @@ export default {
     }
   },
   created () {
-    this.getUserList()
+    // this.getUserList()
   },
   methods: {
     aclick() {

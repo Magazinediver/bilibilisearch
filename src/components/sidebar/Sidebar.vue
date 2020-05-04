@@ -84,13 +84,8 @@
             subs: [
               {
                 icon: 'el-icon-user',
-                index: 'regist',
+                index: 'signup',
                 title: '注册新用户'
-              },
-              {
-                icon: 'el-icon-back',
-                index: 'logout',
-                title: '注销'
               },
               {
                 icon: 'el-icon-setting',
@@ -102,6 +97,7 @@
                 index: 'userfile',
                 title: '用户资料'
               },
+
             ]
           },
         ]
@@ -118,7 +114,8 @@
         this.collapse = msg;
         bus.$emit('collapse-content', msg);
       });
-    }
+    },
+
   };
 </script>
 

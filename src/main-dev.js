@@ -5,7 +5,7 @@ import 'bootstrap'
 import $ from 'jquery'
 import ElementUI from 'element-ui';
 import './assets/css/icon.css';
-
+import './element-variables.scss'
 
 Vue.use(ElementUI, {
 

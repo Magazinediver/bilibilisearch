@@ -26,19 +26,11 @@ const Home = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '../compo
 const Welcome = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '../components/Welcome.vue')
 
 const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '../components/user/User.vue')
-const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '../components/power/Rights.vue')
-const Roles = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '../components/power/Roles.vue')
 
-const Cate = () => import(/* webpackChunkName: "Cate_Params" */ '../components/goods/Cate.vue')
-const Params = () => import(/* webpackChunkName: "Cate_Params" */ '../components/goods/Params.vue')
-
-const GoodsList = () => import(/* webpackChunkName: "GoodsList_Add" */ '../components/goods/List.vue')
-const Add = () => import(/* webpackChunkName: "GoodsList_Add" */ '../components/goods/Add.vue')
-
-const Order = () => import(/* webpackChunkName: "Order_Report" */ '../components/order/Order.vue')
-const Report = () => import(/* webpackChunkName: "Order_Report" */ '../components/report/Report.vue')
 const Signup = () => import(/* webpackChunkName: "Order_Report" */ '../components/user/Signup.vue')
 const Recoverpwd = () => import('../components/user/Recoverpwd')
+const SearchAll = () => import('../components/search/SearchAll')
+const SearchVideo = () => import('../components/search/SearchVideo')
 
 
 
@@ -53,15 +45,9 @@ const routes = [
     redirect: '/Welcome',
     children: [
       { path: '/home', component: Welcome },
+      { path: '/videosearch', component: SearchVideo },
+      { path: '/allsearch', component: SearchAll },
       { path: '/usersearch', component: Users },
-      { path: '/rights', component: Rights },
-      { path: '/roles', component: Roles },
-      { path: '/categories', component: Cate },
-      { path: '/params', component: Params },
-      { path: '/goods', component: GoodsList },
-      { path: '/goods/add', component: Add },
-      { path: '/orders', component: Order },
-      { path: '/reports', component: Report },
       { path: '/recoverpwd', component: Recoverpwd },
     ] }
 
