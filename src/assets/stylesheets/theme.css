@@ -795,7 +795,7 @@ li, ol, ul {
 	html.flexboxlegacy .content-with-menu-container {
 		display: -webkit-box;
 		display: -moz-box;
-		display: box;
+		display: flex;
 		display: -webkit-flex;
 		display: -moz-flex;
 		display: -ms-flexbox;
@@ -921,7 +921,7 @@ li, ol, ul {
 	html.boxed.flexboxlegacy .content-with-menu-container {
 		display: -webkit-box;
 		display: -moz-box;
-		display: box;
+		display: flex;
 		display: -webkit-flex;
 		display: -moz-flex;
 		display: -ms-flexbox;
@@ -2759,7 +2759,7 @@ html.sidebar-right-opened .page-header .sidebar-right-toggle i:before {
 /* Page Header - Mobile */
 @media only screen and (max-width: 767px) {
 	.page-header {
-		padding-right: 80px;
+		padding-right: 0px;
 	}
 
 	.page-header .breadcrumbs {

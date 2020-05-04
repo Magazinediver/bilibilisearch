@@ -787,8 +787,8 @@ html.dark .radio-primary input[type="radio"]:checked + label:after,
 
 .slider-gradient.slider-primary .ui-slider-range,
 .slider-gradient.slider-primary .ui-slider-handle {
-	background-image: -webkit-linear-gradient(left, #00aaff 0, #fb7299 50%, #006699 100%);
-	background-image: linear-gradient(left, #00aaff 0, #fb7299 50%, #006699 100%);
+	background-image: -webkit-linear-gradient(to left, #00aaff 0, #fb7299 50%, #006699 100%);
+	background-image: linear-gradient(to left, #00aaff 0, #fb7299 50%, #006699 100%);
 }
 
 .slider-gradient.ui-slider-vertical.slider-primary .ui-slider-range,

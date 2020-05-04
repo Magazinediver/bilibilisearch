@@ -3669,8 +3669,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: -1px;
 }
 .input-group-btn:last-child > .btn-recover {
-  margin-left: -1px;
-  margin-top: 27px;
+
 }
 .nav {
   margin-bottom: 0;

@@ -38,6 +38,9 @@ const Add = () => import(/* webpackChunkName: "GoodsList_Add" */ '../components/
 const Order = () => import(/* webpackChunkName: "Order_Report" */ '../components/order/Order.vue')
 const Report = () => import(/* webpackChunkName: "Order_Report" */ '../components/report/Report.vue')
 const Signup = () => import(/* webpackChunkName: "Order_Report" */ '../components/user/Signup.vue')
+const Recoverpwd = () => import('../components/user/Recoverpwd')
+
+
 
 Vue.use(VueRouter)
 
@@ -59,6 +62,7 @@ const routes = [
       { path: '/goods/add', component: Add },
       { path: '/orders', component: Order },
       { path: '/reports', component: Report },
+      { path: '/recoverpwd', component: Recoverpwd },
     ] }
 
 ]

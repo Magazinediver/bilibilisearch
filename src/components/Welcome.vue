@@ -30,8 +30,8 @@
               <div id="index-search" class="input-group">
                 <input type="text" class="form-control bilibili-input" placeholder="你想搜索些什么...">
                 <span class="input-group-btn bilibili-span">
-											<button type="submit" id="bilibili-button" class="btn btn-primary">搜索</button>
-										</span>
+                  <button type="submit" id="bilibili-button" class="btn btn-primary">搜索</button>
+                </span>
               </div>
             </div>
           </form>
