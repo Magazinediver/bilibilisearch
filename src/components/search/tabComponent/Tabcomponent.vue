@@ -2,13 +2,13 @@
   <div>
     <el-container>
       <div class="video-container" style="margin: 0 auto;width: 90%;padding-top: 10px;padding-bottom: 30px;" >
-        <li v-for="(item,index) in videos" :key="index" class="video-item matrix">
+        <li v-for="(item,index) in cvideolist" :key="index" class="video-item matrix">
           <a :href="item.link" target="_blank" class="img-anchor">
             <div class="img">
               <div class="lazy-img">
                 <img alt="" :src="item.pic">
               </div>
-              <span class="so-imgTag_rb">54:28:48</span>
+              <span class="so-imgTag_rb">{{item.duration}}</span>
             </div>
           </a>
           <div class="info">
@@ -77,7 +77,7 @@
           {
             link : '//www.bilibili.com/video/BV1HJ41147DG?from=search',
             pic : '//i1.hdslb.com/bfs/archive/20dd430345d90b3fa3ab4abc5b0b87a731042de5.jpg@320w_200h.webp',
-            time : '54:28:48',
+            duration : '54:28:48',
             type : '演讲•公开课',
             title : '2019年最新js(JavaScript)基础入门',
             play : '21.2万',
@@ -207,8 +207,12 @@
             space : '//space.bilibili.com/427606813?from=search'
           },
         ],
+
+
       }
-    }
+    },
+
+    props: ['cvideolist']
   }
 </script>
 

@@ -145,22 +145,7 @@
         // this.userlist = res.data.users
         // this.totle = res.data.totle
       },
-      addUser () {
-        // 提交请求前，表单预验证
-        this.$refs.addUserFormRef.validate(async valid => {
-          // console.log(valid)
-          // 表单预校验失败
-          if (!valid) return
-          const { data: res } = await this.$http.post('users', this.addUserForm)
-          if (res.meta.status !== 201) {
-            this.$message.error('添加用户失败！')
-          }
-          this.$message.success('添加用户成功！')
-          // 隐藏添加用户对话框
-          this.addDialogVisible = false
-          this.getUserList()
-        })
-      },
+
     }
   }
 </script>
