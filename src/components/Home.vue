@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <!-- 头部 -->
-    <el-header style="padding: 0">
+    <el-header>
       <v-header></v-header>
     </el-header>
 
@@ -64,6 +64,11 @@ export default {
   height: 100%;
 }
 
+.el-header{
+  height: 56px!important;
+  padding: 0;
+}
+
 .el-aside {
   background-color: #333744;
 
@@ -72,7 +77,7 @@ export default {
   }
 }
 .el-main {
-  background-color: #eaedf1;
+  background-color: #fff;
 }
 .iconfont{
   margin-right: 10px;

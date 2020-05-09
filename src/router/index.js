@@ -19,6 +19,7 @@ import VueRouter from 'vue-router'
 
 // import Order from '../components/order/Order.vue'
 // import Report from '../components/report/Report.vue'
+// import Rank from "../components/user/Rank";
 
 // 路由懒加载
 const Login = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '../components/Login.vue')
@@ -31,7 +32,7 @@ const Signup = () => import(/* webpackChunkName: "Order_Report" */ '../component
 const Recoverpwd = () => import('../components/user/Recoverpwd')
 const SearchAll = () => import('../components/search/SearchAll')
 const SearchVideo = () => import('../components/search/SearchVideo')
-
+const Rank = () => import ('../components/ranks/Rank')
 
 
 Vue.use(VueRouter)
@@ -49,6 +50,7 @@ const routes = [
       { path: '/allsearch', component: SearchAll },
       { path: '/usersearch', component: Users },
       { path: '/recoverpwd', component: Recoverpwd },
+      { path: '/rank', component: Rank },
     ] }
 
 ]

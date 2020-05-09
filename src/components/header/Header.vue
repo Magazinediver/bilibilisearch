@@ -1,8 +1,8 @@
 <template>
   <div class="head_container">
-    <div style="padding-left: 20px" @click="collapseChage">
-      <i v-if="!collapse" class="el-icon-s-fold"></i>
-      <i v-else class="el-icon-s-unfold"></i>
+    <div style="padding-left: 20px;padding-top: 4px" @click="collapseChage">
+      <i style="margin-top: 3px" v-if="!collapse" class="el-icon-s-fold"></i>
+      <i style="margin-top: 3px"  v-else class="el-icon-s-unfold"></i>
       <img class="top_logo" src="../../assets/images/logo.png" alt />
     </div>
 
@@ -11,7 +11,7 @@
         <!-- 全屏显示 -->
         <div class="btn-fullscreen" @click="handleFullScreen">
           <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
-            <i class="el-icon-rank"></i>
+            <i style="margin-top: 2px" class="el-icon-rank"></i>
           </el-tooltip>
         </div>
         <!-- 用户头像 -->
@@ -25,7 +25,7 @@
           <i class="el-icon-caret-bottom"></i>
         </span>
           <el-dropdown-menu slot="dropdown">
-            <a href="https://github.com/lin-xin/vue-manage-system" target="_blank">
+            <a style="text-decoration: none" href="https://github.com/lin-xin/vue-manage-system" target="_blank">
               <el-dropdown-item>项目仓库</el-dropdown-item>
             </a>
             <el-dropdown-item divided command="logout">退出登录</el-dropdown-item>
@@ -129,8 +129,10 @@
 
   .user-name {
     margin-left: 10px;
+    margin-top: 8px;
   }
   .user-avator {
+    margin-top: 6px;
     margin-left: 20px;
   }
   .user-avator img {

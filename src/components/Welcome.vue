@@ -24,18 +24,19 @@
         <img src="~assets/images/bilibili_2233.png" >
       </div>
       <div id="bilibili_search">
-        <div class="search-control-wrapper">
-          <form action="pages-search-results.html">
-            <div class="form-group">
-              <div id="index-search" class="input-group">
-                <input type="text" class="form-control bilibili-input" placeholder="你想搜索些什么...">
-                <span class="input-group-btn bilibili-span">
-                  <button type="submit" id="bilibili-button" class="btn btn-primary">搜索</button>
-                </span>
-              </div>
-            </div>
-          </form>
+        <div style="margin-top: 15px;">
+          <el-input placeholder="请输入想搜索的内容" v-model="queryInfo.query" class="input-with-select">
+            <el-select v-model="select" slot="prepend" class="search-select" placeholder="">
+              <el-option label="综合搜索" value="1"></el-option>
+              <el-option label="视频搜索" value="2"></el-option>
+              <el-option label="up主搜索" value="3"></el-option>
+            </el-select>
+            <el-button slot="append" @click="searchbtnclick()" icon="el-icon-search" class="home-search-button allsearch-button">
+            搜索
+            </el-button>
+          </el-input>
         </div>
+
       </div>
 
       <div class="index-suggest">
@@ -43,33 +44,39 @@
           <div class="hot-search">
             <div class="title"><i class="title-icon hot"></i>热门搜索<span class="subtitle">Daily Hot</span></div>
             <ul class="hotlist">
-              <li class="item" v-for="(item,index) in special_daily" :key="index+'1'">
+              <li class="item" v-for="(item,index) in historylist.daily.slice(0,3)"  :key="index+'1'">
                 <span class="num special">{{index+1}}</span>
-                <span class="word">{{item}}</span>
+                <span @click="goallsearch($event)" class="word">{{item}}</span>
               </li>
-              <li class="item" v-for="(item,index) in daily1" :key="index+'2'">
+              <li class="item" v-for="(item,index) in historylist.daily.slice(3,10)" :key="index+'2'">
                 <span class="num">{{index+4}}</span>
-                <span class="word">{{item}}</span>
+                <span @click="goallsearch($event)" class="word">{{item}}</span>
               </li>
             </ul>
             <ul class="hotlist">
-              <li class="item" v-for="(item,index) in daily2" :key="index+'3'">
+              <li class="item" v-for="(item,index) in historylist.daily.slice(10,20)" :key="index+'3'">
                 <span class="num">{{index+11}}</span>
-                <span class="word">{{item}}</span>
+                <span @click="goallsearch($event)" class="word">{{item}}</span>
               </li>
             </ul>
           </div>
           <div class="history">
-            <div class="title"><i class="title-icon time"></i>搜索历史<span class="delete-history"><i class="icon-garbage"></i>清空</span>
+            <div class="title">
+              <i class="title-icon time"></i>
+                搜索历史
+              <span @click="clearhistory" class="delete-history">
+                <i class="icon-garbage"></i>
+                清空
+              </span>
               <span class="subtitle">History</span>
             </div>
-            <ul class="list" v-for="(item,index) in history" :key="index">
+            <ul class="list" v-for="(item,index) in historylist.history" :key="index">
               <li class="item">
-                <a href="javascript:;">{{item}}</a>
+                <a class="history-search" @click="goallsearch($event)">{{item}}</a>
               </li>
             </ul>
-            <div class="no-history" style="display: none;">
-              <span>没有历史记录</span>
+            <div class="no-history" style="margin-left: 20px" :class="isdisplay">
+              <span>没有历史记录了！</span>
             </div>
           </div>
         </div>
@@ -87,31 +94,89 @@ import echarts from 'echarts'
 
 export default {
   // 此时,页面上的元素,已经被渲染完毕了
-  async mounted () {
-
+  created() {
+    this.gethistory()
+    if(this.historylist.history === null) {
+      this.isdisplay = ''
+    }else if(this.historylist.history !== null){
+      this.isdisplay = 'nodisplay'
+    }
   },
+
   data(){
     return{
-      special_daily: ['仙王的日常生活','周深','淡黄的长裙'],
-      daily1: ['青春有你2','星游记','特朗普','老番茄','世卫组织','四月新番',
-        '达拉崩吧'],
-      daily2:[
-        '籽岷','中国boy','刺客五六七','张大仙','约会大作战',
-        '地缚少年花子君','蜡笔小新','钉钉','成果','回形针'
-      ],
-      history:['黄驿涵','黄科烨','赵焕明']
+      isdisplay: '',
+      queryInfo:{
+        query: '',
+
+      },
+      select: '1',
+
+      //v-for="item of array.slice(0, 5)"
+      historylist : {
+        daily:['仙王的日常生活','周深','淡黄的长裙','青春有你2','星游记','特朗普','老番茄','世卫组织','四月新番',
+          '达拉崩吧','籽岷','中国boy','刺客五六七','张大仙','约会大作战','地缚少年花子君','蜡笔小新','钉钉','成果','回形针'],
+        history: ['黄驿涵','黄科烨','赵焕明'],
+      },
     }
   },
   methods:{
+    clearhistory(){
+      this.historylist.history = []
+      this.isdisplay = ''
+    },
+
+    goallsearch(e){
+      this.$router.push('/allsearch');
+      this.$store.state.query = e.currentTarget.innerHTML
+    },
+    searchbtnclick(){
+      if(this.select === '1'){
+        this.$router.push('/allsearch');
+        this.$store.state.query = this.queryInfo.query
+      }else if(this.select === '2'){
+        this.$router.push('/videosearch');
+        this.$store.state.query = this.queryInfo.query
+      }else if(this.select === '3'){
+        this.$router.push('/usersearch');
+        this.$store.state.query = this.queryInfo.query
+      }
+    },
     aclick(){
       this.$router.push('/home');
-    }
+    },
+    async gethistory(){
+      const { data: res } = await this.$http.get('/api/homepage', {
+        params: this.queryInfo
+      })
+      if (res.meta.status !== 200) {
+        return this.$message.error('获取搜索结果失败！')
+      }
+      this.historylist.daily = res.data.daily
+      this.historylist.history = res.data.history
+    },
   }
 }
 </script>
 
 <style>
   @import "../assets/stylesheets/theme.css";
+  .el-input-group__append{
+    background-color: #fb7299!important;
+    color: white !important;
+  }
+  .allsearch-button{
+    background-color: #fb7299 !important;
+    color: white !important;
+  }
+
+  .allsearch-button:hover{
+    background-color: #fd457a!important;
+    color: white !important;
+  }
+
+
+
   .sec_bar{
     display: block;
     width:100%;
@@ -121,6 +186,38 @@ export default {
 
   #content-body-index{
     padding-right: 70px;
+  }
+
+  .search-select {
+    width: 130px;
+    color: #444;
+
+
+  }
+
+
+  .search-select:hover{
+    box-shadow: 0 2px 4px rgba(0,0,0,.16);
+    border: 1px solid #ccc;
+
+  }
+
+  .history-search{
+    text-decoration: none !important;
+  }
+
+  .history-search:hover{
+    color: #00a1d6 !important;
+    cursor:pointer !important;
+  }
+
+  .word:hover{
+    color: #00a1d6 !important;
+    cursor:pointer !important;
+  }
+
+  .nodisplay{
+    display: none;
   }
 
 </style>

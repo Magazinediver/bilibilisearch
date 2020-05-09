@@ -78,6 +78,11 @@
             title: '视频搜索'
           },
           {
+            icon: 'el-icon-data-analysis',
+            index: 'rank',
+            title: '排行榜'
+          },
+          {
             icon: 'el-icon-s-tools',
             index: 'usermanager',
             title: '用户管理',

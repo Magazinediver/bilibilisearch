@@ -29,7 +29,7 @@
               <div style="margin-left: 0" class="row">
                 <el-form-item  class="col-sm-6 mb-lg" prop="password">
                   <label>Password / 密码</label>
-                  <el-input v-model="addUserForm.password"></el-input>
+                  <el-input type="password" v-model="addUserForm.password"></el-input>
                 </el-form-item>
                 <el-form-item class="col-sm-6 mb-lg" prop="mobile">
                   <label>Mobile / 手机号码</label>
@@ -97,7 +97,7 @@
           username: '',
           password: '',
           email: '',
-          mobile: ''
+          mobile: '',
         },
         userlist: [],
         // 用户添加表单验证规则
@@ -135,15 +135,20 @@
       postOpenPlatform(){
         this.$router.replace('/login')
       },
-      async getUserList () {
-        const { data: res } = await this.$http.get('/api/login', {
-          params: this.queryInfo
+      addUser () {
+        this.$refs.addUserFormRef.validate(async valid => {
+          // console.log(valid)
+          if (!valid){
+            return this.$message.error('填写的内容非法！')
+            return false
+          }
+          const {data: res} = await this.$http.post('/api/user/register/', this.addUserForm)
+          if (res.meta.status !== 200) {
+            return this.$message.error('注册用户失败！')
+          }
+          this.$message.success('注册成功')
+          this.$router.replace('/login')
         })
-        if (res.meta.status !== 200) {
-          // return this.$message.error('获取用户列表失败！')
-        }
-        // this.userlist = res.data.users
-        // this.totle = res.data.totle
       },
 
     }

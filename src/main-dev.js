@@ -6,10 +6,12 @@ import $ from 'jquery'
 import ElementUI from 'element-ui';
 import './assets/css/icon.css';
 import './element-variables.scss'
-
+import store from "./store";
 Vue.use(ElementUI, {
 
 });
+
+Vue.prototype.$store = store
 // 导入全局样式
 import './assets/css/global.css'
 // 导入字体图标
