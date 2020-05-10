@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="welcome">
     <div class="sec_bar">
         <header class="page-header">
           <h2>首页</h2>
@@ -161,6 +161,11 @@ export default {
 
 <style>
   @import "../assets/stylesheets/theme.css";
+
+  .welcome{
+    overflow-x: hidden;
+  }
+
   .el-input-group__append{
     background-color: #fb7299!important;
     color: white !important;

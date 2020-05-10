@@ -28,14 +28,16 @@
       <el-row :gutter="20">
         <el-col :span="18" :offset="3">
           <el-input placeholder="请输入你想查询的视频" v-model="queryInfo.query">
-            <el-select style="width: 130px" v-model="queryInfo.select" slot="prepend" placeholder="请选择">
-              <el-option label="番剧" value="1"></el-option>
-              <el-option label="视频" value="2"></el-option>
-              <el-option label="影视" value="3"></el-option>
-
-            </el-select>
             <el-button class="videosearch" slot="append" icon="el-icon-search" @click="getvideo"></el-button>
           </el-input>
+        </el-col>
+      </el-row>
+
+      <el-row :gutter="20" style="margin-top: 15px">
+        <el-col :span="18" :offset="3">
+          <ul class="box">
+            <li v-for="(item,index) of videotype" :class="{checked:index==queryInfo.select}" @click="changeList(index)">{{item}}</li>
+          </ul>
         </el-col>
       </el-row>
 
@@ -97,13 +99,16 @@
     },
     data () {
       return {
+
+        videotype : ["全部分区","动漫","舞蹈","番剧","时尚","游戏","鬼畜","国创","生活","音乐","科技","数码","影视","娱乐"],
+
         //当前展开tab选项为
         activeName: 'first',
         currentDate: new Date(),
 
         //请求携带信息
         queryInfo: {
-          select: '1',
+          select: 0,
           query: '',
           // 当前页数
           pagenum: 1,
@@ -123,6 +128,9 @@
     },
     methods: {
 
+      changeList(index){
+        this.queryInfo.select = index;//this指向app
+      },
 
       //回到首页函数
       aclick() {
@@ -172,6 +180,35 @@
 
 <style scoped>
 
+
+
+  .box{
+    margin-left: -10px;
+    padding:0;
+    list-style:none;
+  }
+  .box  li{
+    width: fit-content;
+    height:23px;
+    display:inline-block;
+    border-radius:4px;
+    text-align:center;
+    line-height:23px;
+    cursor:pointer;
+    transition:all 0.3s linear;
+    margin-left:10px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .box li:hover{
+    color: #00a1d6;
+  }
+  .box li.checked{
+    background-color: #00a1d6;
+    color: #fff;
+  }
+
+
   .el-input-group__append{
     background-color: #fb7299!important;
     color: white !important;
@@ -186,5 +223,6 @@
     background-color: #fd457a!important;
     color: white !important;
   }
+
 
 </style>
