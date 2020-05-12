@@ -1,12 +1,14 @@
 module.exports = {
   devServer: {
+    // port : 7419,
+    // host: '0.0.0.0',
     proxy: {
-      '/api': {
+      '/bilibili': {
         target: 'http://121.36.153.113:8000/bilibili/',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
-          '^/api': ''
+          '^/bilibili': ''
         }
       }
     }

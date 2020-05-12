@@ -112,7 +112,7 @@ a:active {
 }
 
 .index-suggest{
-	margin-left: 33px;
+	margin-left: 70px;
 }
 
 .home-suggest {
@@ -141,18 +141,6 @@ a:active {
 	color: #000000;
 }
 
-.hot-search > .title > .title-icon {
-
-/*    font-style: normal;
-    font-weight: 400; */
-
-    position: absolute;
-    display: inline-block;
-    right: 100%;
-    width: 34px;
-    height: 28px;
-    background: url(//s1.hdslb.com/bfs/static/jinkela/search/asserts/search_title_icon.png) no-repeat;
-}
 
 .subtitle {
     font-size: 12px;

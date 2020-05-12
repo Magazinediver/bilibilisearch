@@ -111,7 +111,7 @@ export default {
         if (!valid) return false
         // this.$http.post('login', this.loginForm): 返回值为promise
         // 返回值为promise，可加await简化操作 相应的也要加async
-        const { data: res } = await this.$http.post('/api/user/login', this.loginForm)
+        const { data: res } = await this.$http.post('/bilibili/user/login', this.loginForm)
         // console.log(res)
         if (res.meta.status !== 200) return this.$message.error('登录失败')
         this.$message.success('登录成功')

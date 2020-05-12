@@ -126,7 +126,7 @@ export default {
       this.$router.push('/home');
     },
     async getuplist () {
-      const { data: res } = await this.$http.get('/api/up/allupmsg', {
+      const { data: res } = await this.$http.get('/bilibili/up/allupmsg', {
         params: this.queryInfo
       })
       if (res.meta.status !== 200) {

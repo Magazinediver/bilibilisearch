@@ -184,7 +184,7 @@
 
 
       async getrank(){
-        const { data: res } = await this.$http.get('/api/video/videomsg', {
+        const { data: res } = await this.$http.get('/bilibili/video/videomsg', {
           params: this.queryInfo
         })
         if (res.meta.status !== 200) {

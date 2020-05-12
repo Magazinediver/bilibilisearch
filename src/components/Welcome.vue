@@ -21,7 +21,7 @@
     <!-- 2.为Echarts准备一个Dom -->
     <div id="content-body-index">
       <div id="bilibili_2233">
-        <img src="~assets/images/bilibili_2233.png" >
+        <img class="pic" src="~assets/images/bilibili_2233.png" >
       </div>
       <div id="bilibili_search">
         <div style="margin-top: 15px;">
@@ -146,7 +146,7 @@ export default {
       this.$router.push('/home');
     },
     async gethistory(){
-      const { data: res } = await this.$http.get('/api/homepage', {
+      const { data: res } = await this.$http.get('/bilibili/homepage', {
         params: this.queryInfo
       })
       if (res.meta.status !== 200) {
@@ -161,6 +161,10 @@ export default {
 
 <style>
   @import "../assets/stylesheets/theme.css";
+
+  .pic:hover{
+    content: url("../assets/images/bilibili_2233_2.png");
+  }
 
   .welcome{
     overflow-x: hidden;
@@ -204,7 +208,7 @@ export default {
   .search-select:hover{
     box-shadow: 0 2px 4px rgba(0,0,0,.16);
     border: 1px solid #ccc;
-
+    background-image: linear-gradient(0deg,#f8f8f8,#fff);
   }
 
   .history-search{
@@ -223,6 +227,27 @@ export default {
 
   .nodisplay{
     display: none;
+  }
+
+  .hot-search > .title > .title-icon {
+
+    /*    font-style: normal;
+        font-weight: 400; */
+
+    position: absolute;
+    display: inline-block;
+    right: 100%;
+    width: 34px;
+    height: 28px;
+    background: url(//s1.hdslb.com/bfs/static/jinkela/search/asserts/search_title_icon.png) no-repeat;
+  }
+
+  .title-icon.time {
+    background-position: -1px -38px!important;
+  }
+
+  .title-icon.history{
+    background-position: -1px -1px!important;
   }
 
 </style>

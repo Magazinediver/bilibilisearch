@@ -15,7 +15,11 @@
               <div class="info">
                 <div class="headline clearfix">
                   <span class="type hide">{{item.type}}</span>
-                  <a :href="item.link" target="_blank" class="title">{{item.title}}</a>
+<!--                  <a :href="item.link" target="_blank" class="title">{{item.title}}</a>-->
+                  <a :href="item.link" target="_blank" class="title">
+                    <span>{{item.title.slice(0,item.title.toLowerCase().indexOf(cquery.toLowerCase()))}}</span><span
+                    style="color:#fb7299">{{item.title.slice(item.title.toLowerCase().indexOf(cquery.toLowerCase()),item.title.toLowerCase().indexOf(cquery.toLowerCase())+cquery.length)}}</span><span>{{item.title.substr(item.title.toLowerCase().indexOf(cquery.toLowerCase())+cquery.length)}}</span>
+                  </a>
                 </div>
                 <div class="tags">
                   <span title="观看" class="so-icon watch-num"><i class="icon-playtime"></i>{{item.play}}</span>
@@ -40,7 +44,8 @@
     name: "Tabcomponent",
     data(){
       return{
-        videolist:{
+        videolist:[{
+          query : '入门',
           link : '//www.bilibili.com/video/BV1HJ41147DG?from=search',
           pic : '//i1.hdslb.com/bfs/archive/20dd430345d90b3fa3ab4abc5b0b87a731042de5.jpg@320w_200h.webp',
           duration : '54:28:48',
@@ -52,10 +57,16 @@
           up : '码出未来',
           mid : '119',
         },
+        ],
 
       }
     },
-    props: ['cvideolist']
+    methods:{
+      replace() {
+
+      }
+    },
+    props: ['cvideolist','cquery']
   }
 </script>
 
@@ -196,5 +207,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #99A2AA;
   }
 </style>

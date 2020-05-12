@@ -142,7 +142,7 @@
             return this.$message.error('填写的内容非法！')
             return false
           }
-          const {data: res} = await this.$http.post('/api/user/register/', this.addUserForm)
+          const {data: res} = await this.$http.post('/bilibili/user/register/', this.addUserForm)
           if (res.meta.status !== 200) {
             return this.$message.error('注册用户失败！')
           }

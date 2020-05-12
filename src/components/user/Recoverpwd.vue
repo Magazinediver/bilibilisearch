@@ -114,7 +114,7 @@
           if (!valid) return false
           // this.$http.post('reset', this.resetForm): 返回值为promise
           // 返回值为promise，可加await简化操作 相应的也要加async
-          const {data: res} = await this.$http.post('/api/reset', this.resetForm)
+          const {data: res} = await this.$http.post('/bilibili/reset', this.resetForm)
           // console.log(res)
           if (res.meta.status !== 200) return this.$message.error('重置失败')
 
