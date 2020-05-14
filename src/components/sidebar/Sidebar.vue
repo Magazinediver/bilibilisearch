@@ -97,11 +97,11 @@
                 index: 'recoverpwd',
                 title: '修改密码'
               },
-              {
-                icon: 'el-icon-film',
-                index: 'userfile',
-                title: '用户资料'
-              },
+              // {
+              //   icon: 'el-icon-film',
+              //   index: 'userfile',
+              //   title: '用户资料'
+              // },
 
             ]
           },

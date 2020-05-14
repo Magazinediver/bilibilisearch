@@ -25,7 +25,7 @@
       </div>
       <div id="bilibili_search">
         <div style="margin-top: 15px;">
-          <el-input placeholder="请输入想搜索的内容" v-model="queryInfo.query" class="input-with-select">
+          <el-input placeholder="请输入想搜索的内容" v-model="queryInfo.query" class="input-with-select" @keyup.enter.native="searchbtnclick">
             <el-select v-model="select" slot="prepend" class="search-select" placeholder="">
               <el-option label="综合搜索" value="1"></el-option>
               <el-option label="视频搜索" value="2"></el-option>
@@ -81,8 +81,11 @@
           </div>
         </div>
       </div>
-
+      <div class="text-center beian">
+        <p style="display: inline;">浙ICP备20014928号-1</p><p style="display: inline;margin-left: 20px">Copyright 2020. All rights reserved. Design by <a href="http://121.36.153.113/">HYH</a>.</p>
+      </div>
     </div>
+
 
   </div>
 
@@ -95,7 +98,7 @@ import echarts from 'echarts'
 export default {
   // 此时,页面上的元素,已经被渲染完毕了
   created() {
-    this.gethistory()
+    // this.gethistory()
     if(this.historylist.history === null) {
       this.isdisplay = ''
     }else if(this.historylist.history !== null){
@@ -108,7 +111,7 @@ export default {
       isdisplay: '',
       queryInfo:{
         query: '',
-
+        isSetHisNull: 'false',
       },
       select: '1',
 
@@ -124,6 +127,8 @@ export default {
     clearhistory(){
       this.historylist.history = []
       this.isdisplay = ''
+      this.queryInfo.isSetHisNull = 'true'
+      this.gethistory();
     },
 
     goallsearch(e){
@@ -154,6 +159,9 @@ export default {
       }
       this.historylist.daily = res.data.daily
       this.historylist.history = res.data.history
+      if(res.data.history !== null){
+        this.queryInfo.isSetHisNull = 'false'
+      }
     },
   }
 }
@@ -248,6 +256,15 @@ export default {
 
   .title-icon.history{
     background-position: -1px -1px!important;
+  }
+
+  .home-suggest{
+    height: 450px;
+  }
+
+  .beian{
+    color: #999999;
+    margin-bottom: 10px;
   }
 
 </style>

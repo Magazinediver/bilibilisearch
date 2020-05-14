@@ -27,7 +27,7 @@
       <!-- 搜索 添加 -->
       <el-row :gutter="20">
         <el-col :span="18" :offset="3">
-          <el-input placeholder="请输入你想查询的视频" v-model="queryInfo.query">
+          <el-input placeholder="请输入你想查询的视频" v-model="queryInfo.query" @keyup.enter.native="getvideo">
             <el-button class="videosearch" slot="append" icon="el-icon-search" @click="getvideo"></el-button>
           </el-input>
         </el-col>
@@ -52,24 +52,24 @@
 
       <el-row :gutter="20" style="margin-top: 15px">
         <el-col :span="18" :offset="3">
-          <el-tabs v-model="activeName" @tab-click="handleClick" tab-position="top" stretch>
-            <el-tab-pane label="综合搜索" name="first">
-              <Tabcomponent :cquery="this.queryInfo.query" :cvideolist="videolist"></Tabcomponent>
+          <el-tabs v-model="activeName" @tab-click="handleClick" tab-position="top" stretch key="tab">
+            <el-tab-pane label="搜索/推荐" name="first" key="all">
+              <Tabcomponent :cquery="this.query" :cvideolist="videolist"></Tabcomponent>
             </el-tab-pane>
-            <el-tab-pane label="最新发布" name="second">
-              <Tabcomponent :cquery="this.queryInfo.query" :cvideolist="videolist"></Tabcomponent>
+            <el-tab-pane label="最新发布" name="second" key="lastest">
+              <Tabcomponent :cquery="this.query" :cvideolist="videolist"></Tabcomponent>
             </el-tab-pane>
-            <el-tab-pane label="最多播放" name="third">
-              <Tabcomponent :cquery="this.queryInfo.query" :cvideolist="videolist"></Tabcomponent>
+            <el-tab-pane label="最多播放" name="third" key="mostplay">
+              <Tabcomponent :cquery="this.query" :cvideolist="videolist"></Tabcomponent>
             </el-tab-pane>
-            <el-tab-pane label="最多弹幕" name="fourth">
-              <Tabcomponent :cquery="this.queryInfo.query" :cvideolist="videolist"></Tabcomponent>
+            <el-tab-pane label="最多弹幕" name="fourth" key="mostdanmu">
+              <Tabcomponent :cquery="this.query" :cvideolist="videolist"></Tabcomponent>
             </el-tab-pane>
-            <el-tab-pane label="最多硬币" name="fifth">
-              <Tabcomponent :cquery="this.queryInfo.query" :cvideolist="videolist"></Tabcomponent>
+            <el-tab-pane label="最多硬币" name="fifth" key="mostcoin">
+              <Tabcomponent :cquery="this.query" :cvideolist="videolist"></Tabcomponent>
             </el-tab-pane>
-            <el-tab-pane label="最多收藏" name="sixth">
-              <Tabcomponent :cquery="this.queryInfo.query" :cvideolist="videolist"></Tabcomponent>
+            <el-tab-pane label="最多收藏" name="sixth" key="mostcollected">
+              <Tabcomponent :cquery="this.query" :cvideolist="videolist"></Tabcomponent>
             </el-tab-pane>
           </el-tabs>
         </el-col>
@@ -105,13 +105,14 @@
     },
     name: "SearchAll",
     created() {
+
       this.queryInfo.query = this.$store.state.query
       console.log(this.queryInfo.query);
       this.getvideo()
     },
     data () {
       return {
-
+        query:'',
         videotype : ["全部分区","动漫","舞蹈","番剧","时尚","游戏","鬼畜","国创","生活","音乐","科技","数码","影视","娱乐"],
         emotiontype : ["全部情感","令人愉悦","令人悲伤","励志","恐怖","失落"],
 
@@ -177,6 +178,7 @@
         }
         this.videolist = res.data
         this.total = res.total
+        this.query = this.queryInfo.query
       },
 
 

@@ -27,17 +27,18 @@
       <el-row :gutter="20">
 
         <el-col :span="14">
-          <el-input placeholder="请输入你想查询的up主" v-model="queryInfo.query" clearable @clear="getuplist">
+          <el-input placeholder="请输入你想查询的up主" v-model="queryInfo.query" clearable @clear="getuplist" @keyup.enter.native="getuplist">
             <el-button class="upsearch" slot="append" icon="el-icon-search" @click="getuplist"></el-button>
           </el-input>
         </el-col>
 
-        <el-col :span="8" :offset="1">
+        <el-col :span="9" :offset="1">
           <el-radio-group @change="getRadioQuery" v-model="queryInfo.type">
-            <el-radio-button label="粉丝升"></el-radio-button>
+            <el-radio-button label="默认"></el-radio-button>
             <el-radio-button label="粉丝降"></el-radio-button>
-            <el-radio-button label="LV升"></el-radio-button>
+            <el-radio-button label="粉丝升"></el-radio-button>
             <el-radio-button label="LV降"></el-radio-button>
+            <el-radio-button label="LV升"></el-radio-button>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -99,9 +100,10 @@ export default {
   },
   data () {
     return {
+
       // 获取用户列表查询参数对象
       queryInfo: {
-        type : '粉丝升',
+        type : '默认',
 
         query: '',
         // 当前页数
@@ -134,6 +136,7 @@ export default {
       }
       this.uplist = res.data
       this.total = res.total
+
     },
 
     getRadioQuery() {

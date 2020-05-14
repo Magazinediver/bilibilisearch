@@ -18,6 +18,7 @@ import VueQuillEditor from 'vue-quill-editor'
 
 // 导入NProgress, 包对应的JS和CSS
 import NProgress from 'nprogress'
+import './element-variables.scss'
 // import 'nprogress/nprogress.css'
 
 import axios from 'axios'
